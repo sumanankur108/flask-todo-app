@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="box" id="heading">
+        <h1>{{ kind_of_list |capitalize }} List</h1>
+    </div>
+    <div class="box">
+        {% for todo in todo_list %}
+            <div class="item">
+                <label>
+                    <input type="checkbox">
+                </label>
+                <p>{{ todo }}</p>
+            </div>
+        {% endfor %}
+        <form action="/" method="post">
+            <label for="new_todo">
+                <input
+                        type="text"
+                        id="new_todo"
+                        name="new_todo"
+                        placeholder="Next Item"
+                        autocomplete="off"
+                />
+            </label>
+            <button type="submit" name="list_type" value="{{ kind_of_list }}">+</button>
+        </form>
+    </div>
+{% endblock %}
